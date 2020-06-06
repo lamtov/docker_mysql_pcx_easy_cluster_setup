@@ -1,3 +1,4 @@
+![CI](https://github.com/lamto20132223/docker_mysql_pcx_easy_cluster_setup/workflows/CI/badge.svg)
 # Percona_Xtra_Db Easy Cluster Setup
 
 
