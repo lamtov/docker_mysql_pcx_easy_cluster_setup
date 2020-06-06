@@ -1,0 +1,4 @@
+Defaults:mysql !requiretty
+
+mysql ALL = (root) NOPASSWD: /usr/bin/mysql-rootwrap /etc/mysql/rootwrap.conf *
+mysql ALL=(root) NOPASSWD:SETENV: /usr/local/bin/copy_file.sh
