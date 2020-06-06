@@ -1,0 +1,48 @@
+[mysql]
+prompt='mysql [compute03] > '
+
+
+[mysqld]
+#bind-address = 10.255.26.100
+
+bind-address = 0.0.0.0
+
+
+# Path to Galera library
+wsrep_provider=/usr/lib/libgalera_smm.so
+
+server_id=1
+log_bin=percona-bin
+log_slave_updates
+binlog_format = ROW
+expire-logs-days = 8
+
+wsrep_slave_threads= 8
+wsrep_log_conflicts
+
+
+
+wsrep_cluster_address= gcomm://WSREP_CLUSTER_ADDRESS
+wsrep_cluster_name= pxc-cluster_2
+wsrep_node_name= compute01
+wsrep_node_address= 172.16.29.196
+
+pxc_strict_mode=ENFORCING
+
+# SST method
+wsrep_sst_method=xtrabackup-v2
+
+#Authentication for SST method
+wsrep_sst_auth="sstuser:fPWOWrsMGLaBaP74iK57XoOyJy8aAEew"
+wsrep_provider_options="pc.weight=40"
+
+
+# MyISAM storage engine has only experimental support
+default_storage_engine=InnoDB
+# InnoDB config
+innodb_locks_unsafe_for_binlog = 1
+innodb_autoinc_lock_mode = 2
+# Using default innodb_buffer_pool_size since memory is below 32G
+innodb_buffer_pool_size = 128M
+innodb_large_prefix=off
+
